@@ -34,6 +34,6 @@ LoadLibraries <- function(...) {
 
   for (package in packages) {
     library(package, character.only = TRUE)
-    cat(paste0(package, " loaded.\n"))
+    cat(paste0("Loading package: ", package, "\n"))
   }
 }
