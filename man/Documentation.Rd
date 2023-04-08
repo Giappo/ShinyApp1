@@ -5,16 +5,46 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-Documentation(data, title = "Table", fileName, menuOutputOptions, ...)
+Documentation(
+  table,
+  title = "Table",
+  fileName,
+  menuOutputOptions,
+  method,
+  inputFunction,
+  when,
+  session = NULL,
+  refreshTime = 1,
+  text,
+  tabName,
+  icon,
+  ...
+)
 }
 \arguments{
-\item{data}{Some data.}
+\item{table}{Some data.}
 
 \item{title}{The title of the table.}
 
 \item{fileName}{The name of file to download.}
 
 \item{menuOutputOptions}{Choices for the menu output.}
+
+\item{method}{Specify the method for the function.}
+
+\item{inputFunction}{A function.}
+
+\item{when}{When should the update occur?}
+
+\item{session}{A shiny session.}
+
+\item{refreshTime}{Refresh time of the app in seconds.}
+
+\item{text}{Text to show for the menu item.}
+
+\item{tabName}{The name of a tab that this menu item will activate. Not compatible with href.}
+
+\item{icon}{An icon tag, created by icon. If NULL, don't display an icon.}
 
 \item{...}{Additional arguments to be passed to inherited methods}
 }

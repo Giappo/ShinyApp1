@@ -1,27 +1,38 @@
-mod_tab2_server <- function(id) {
+mod_tab2_server <- function(
+    id,
+    DataSetName
+) {
   shiny::moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
-    df <- iris
-
     # Sidebar
     output$input1 <- shiny::renderUI({
+      choices <- data()$results %>% as.data.frame() %>% dplyr::pull(Item) %>% sort()
+
       shiny::selectInput(
-        "input_tab1",
-        label = "Select Input for Tab 1",
-        choices = c("Option 1", "Option 2")
+        inputId = "tab2_input1",
+        label = "Select Dataset",
+        choices = choices,
+        selected = choices[1]
       )
     })
 
     # Body
-    output$plot1 <- shiny::renderPlot({
-      cat("Rendering plot1 from", id, "\n")
-      plot(df)
+    DataSet <- shiny::reactive({
+      shiny::req(DataSetName())
+      get(DataSetName()) %>% as.data.frame()
+    })
+
+    output$plot1 <- plotly::renderPlotly({
+      shiny::req(DataSet())
+      cat("Rendering plot1 in", id, "for dataset", DataSetName(), "\n")
+      DataSet() %>% ShinyApp1::BuildPlot()
     })
 
     output$table1 <- DT::renderDT(server = FALSE, {
-      cat("Rendering table1 from", id, "\n")
-      df %>% ShinyApp1::BuildDT()
+      shiny::req(DataSet())
+      cat("Rendering table1 in", id, "for dataset", DataSetName(), "\n")
+      DataSet() %>% ShinyApp1::BuildDT()
     })
 
   })

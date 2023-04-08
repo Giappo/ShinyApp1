@@ -1,9 +1,9 @@
 #' Cooler Menu Item
 #'
-#' @importFrom shinydashboard menuItem
+#' @inheritParams Documentation
 #'
 #' @export
-menuItem <- function(
+MenuItem <- function(
     text,
     tabName,
     icon,
@@ -23,6 +23,7 @@ menuItem <- function(
       text = text,
       tabName = tabName,
       icon = icon,
+      startExpanded = TRUE,
       ...
     ),
     tabName = tabName
