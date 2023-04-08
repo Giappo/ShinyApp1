@@ -64,3 +64,29 @@ DetectChange_Second <- function(...) {
   }
   f
 }
+
+#' Update the function evaluation when something triggers
+#'
+#' @inheritParams Documentation
+#'
+#' @export
+DetectChange_Time <- function(
+    triggerTime = "09:30:14"
+) {
+
+  triggerTime2 <- as.POSIXct(paste0("2023-04-09 ", triggerTime))
+
+  ConvertTimeToNumeric <- function(triggerTime) {
+    seconds <- as.numeric(format(triggerTime, "%S", tz = "CET"))
+    minutes <- as.numeric(format(triggerTime, "%M", tz = "CET"))
+    hours <- as.numeric(format(triggerTime, "%H", tz = "CET"))
+    return(seconds + minutes * 60 + hours * 3600)
+  }
+  numericTriggerTime <- ConvertTimeToNumeric(triggerTime2)
+  numericCurrentTime <- ConvertTimeToNumeric(Sys.time())
+
+  f <- function() {
+    (numericTriggerTime - numericCurrentTime) %>% abs() < 5
+  }
+  f
+}
