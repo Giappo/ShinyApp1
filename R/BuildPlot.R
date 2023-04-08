@@ -13,8 +13,8 @@ BuildPlot <- function(
   y_var <- names(table)[sapply(table, is.numeric)][2]
   table %>%
     plotly::plot_ly(
-      x = as.formula(paste0("~", x_var)),
-      y = as.formula(paste0("~", y_var)),
+      x = stats::as.formula(paste0("~", x_var)),
+      y = stats::as.formula(paste0("~", y_var)),
       type = "scatter",
       mode = "markers"
     )
