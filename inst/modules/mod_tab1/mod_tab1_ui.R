@@ -11,7 +11,7 @@ mod_tab1_ui_body <- function(id) {
     shiny::fluidRow(
       shiny::column(
         width = 12,
-        shiny::plotOutput(ns("plot1"))
+        plotly::plotlyOutput(ns("plot1"))
       ),
     ),
     shiny::fluidRow(

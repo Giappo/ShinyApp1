@@ -1,4 +1,6 @@
-header <- shinydashboard::dashboardHeader(title = "ShinyApp1")
+header <- shinydashboard::dashboardHeader(
+  title = "ShinyApp1"
+)
 
 sidebar <- shinydashboard::dashboardSidebar(
   shinydashboard::sidebarMenu(

@@ -23,6 +23,7 @@ menuItem <- function(
       text = text,
       tabName = tabName,
       icon = icon,
+      startExpanded = TRUE,
       ...
     ),
     tabName = tabName

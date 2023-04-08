@@ -5,10 +5,10 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-Documentation(data, title = "Table", fileName, menuOutputOptions, ...)
+Documentation(table, title = "Table", fileName, menuOutputOptions, ...)
 }
 \arguments{
-\item{data}{Some data.}
+\item{table}{Some data.}
 
 \item{title}{The title of the table.}
 

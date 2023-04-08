@@ -4,11 +4,11 @@
 #'
 #' @export
 BuildDT <- function(
-    data,
+    table,
     title = "Table",
     fileName,
     menuOutputOptions
 ) {
-  data %>%
+  table %>%
     DT::datatable(caption = title)
 }
