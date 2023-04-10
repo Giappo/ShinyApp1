@@ -12,6 +12,7 @@ Imports:
     DT,
     ggplot2,
     plotly,
+    purrr,
     rlang,
     shiny,
     shinydashboard,

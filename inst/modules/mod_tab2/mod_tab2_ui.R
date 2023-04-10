@@ -1,7 +1,7 @@
 mod_tab2_ui_sidebar <- function(id) {
   ns <- shiny::NS(id)
 
-  shiny::uiOutput(ns("input1"))
+  shiny::uiOutput(ns("tab2_DatasetName"))
 }
 
 mod_tab2_ui_body <- function(id) {

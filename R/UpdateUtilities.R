@@ -1,17 +1,3 @@
-#' Add arguments to function evaluation
-#'
-#' @inheritParams Documentation
-#'
-#' @export
-AddArguments <- function(
-    inputFunction,
-    ...
-) {
-  function() {
-    rlang::exec(inputFunction, !!!list(...))
-  }
-}
-
 #' Update the function evaluation when something triggers
 #'
 #' @inheritParams Documentation

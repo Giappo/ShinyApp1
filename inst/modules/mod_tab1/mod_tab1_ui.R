@@ -1,7 +1,11 @@
 mod_tab1_ui_sidebar <- function(id) {
   ns <- shiny::NS(id)
 
-  shiny::uiOutput(ns("input1"))
+  shiny::tagList(
+    shiny::uiOutput(ns("DatasetName")),
+    shiny::uiOutput(ns("X")),
+    shiny::uiOutput(ns("Y"))
+  )
 }
 
 mod_tab1_ui_body <- function(id) {

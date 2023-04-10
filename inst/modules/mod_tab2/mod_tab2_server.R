@@ -1,16 +1,21 @@
 mod_tab2_server <- function(
-    id,
-    DataSetName
+    namespace = "tab2",
+    input,
+    DataSetName = shiny::reactive(input[[NS2(namespace = namespace, "DatasetName")]])
 ) {
-  shiny::moduleServer(id, function(input, output, session) {
+  shiny::moduleServer(namespace, function(input, output, session) {
     ns <- session$ns
+    ns2 <- ShinyApp1::NS2(namespace = namespace)
 
     # Sidebar
-    output$input1 <- shiny::renderUI({
-      choices <- data()$results %>% as.data.frame() %>% dplyr::pull(Item) %>% sort()
+    output$tab2_DatasetName <- shiny::renderUI({
+      choices <- data()$results %>%
+        as.data.frame() %>%
+        dplyr::pull(Item) %>%
+        sort()
 
       shiny::selectInput(
-        inputId = "tab2_input1",
+        inputId = ns2("tab2_DatasetName"),
         label = "Select Dataset",
         choices = choices,
         selected = choices[1]
@@ -25,13 +30,13 @@ mod_tab2_server <- function(
 
     output$plot1 <- plotly::renderPlotly({
       shiny::req(DataSet())
-      cat("Rendering plot1 in", id, "for dataset", DataSetName(), "\n")
+      cat("Rendering plot1 in", namespace, "for dataset", DataSetName(), "\n")
       DataSet() %>% ShinyApp1::BuildPlot()
     })
 
     output$table1 <- DT::renderDT(server = FALSE, {
       shiny::req(DataSet())
-      cat("Rendering table1 in", id, "for dataset", DataSetName(), "\n")
+      cat("Rendering table1 in", namespace, "for dataset", DataSetName(), "\n")
       DataSet() %>% ShinyApp1::BuildDT()
     })
 

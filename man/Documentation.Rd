@@ -18,6 +18,7 @@ Documentation(
   text,
   tabName,
   icon,
+  triggerTime = "15:32:30",
   ...
 )
 }
@@ -45,6 +46,8 @@ Documentation(
 \item{tabName}{The name of a tab that this menu item will activate. Not compatible with href.}
 
 \item{icon}{An icon tag, created by icon. If NULL, don't display an icon.}
+
+\item{triggerTime}{Time at which the DetectChange_Time function should trigger.}
 
 \item{...}{Additional arguments to be passed to inherited methods}
 }
